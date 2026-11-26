@@ -1,0 +1,52 @@
+.materials-heading { margin: 30px 0 16px; align-items: flex-end; }
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.material-card { display: flex; flex-direction: column; overflow: hidden; }
+
+.material-icon {
+    min-height: 92px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1.75rem;
+}
+.material-math { background: linear-gradient(130deg, #164e8a, #328ac1); }
+.material-physics { background: linear-gradient(130deg, #087e75, #18b89c); }
+.material-chemistry { background: linear-gradient(130deg, #9a315d, #d75a82); }
+.material-biology { background: linear-gradient(130deg, #387a4c, #79b96a); }
+.material-history { background: linear-gradient(130deg, #30216d, #7052b8); }
+.material-geography { background: linear-gradient(130deg, #087e75, #54b7a3); }
+.material-language { background: linear-gradient(130deg, #9a315d, #c45d8a); }
+.material-society { background: linear-gradient(130deg, #45436c, #8185ae); }
+
+.material-card-body {
+    padding: 18px 17px 19px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.material-card h3 { margin: 7px 0 8px; color: var(--heading); font-size: .94rem; line-height: 1.35; }
+.material-card p { margin-bottom: 16px; color: var(--text-muted); font-size: .77rem; line-height: 1.5; }
+.material-card a { margin-top: auto; color: var(--link); font-size: .78rem; font-weight: 800; }
+.material-card a:hover { text-decoration: underline; }
+
+.materials-empty { padding: 30px 10px; color: var(--text-muted); text-align: center; }
+
+@media (max-width: 1050px) { .materials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+    .materials-grid { grid-template-columns: minmax(0, 1fr); }
+    .material-card { display: grid; grid-template-columns: 76px minmax(0, 1fr); }
+    .material-icon { min-height: 100%; padding: 14px; justify-content: center; }
+    .material-card-body { padding: 14px; }
+}
+@media (max-width: 380px) {
+    .material-card { grid-template-columns: 60px minmax(0, 1fr); }
+    .materials-heading { align-items: flex-start; flex-direction: column; }
+}

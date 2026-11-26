@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar | Meta Vestibular</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="auth.js"></script>
+    <script src="login.js" defer></script>
+</head>
+<body class="login-body">
+    <div class="login-layout">
+        <aside class="login-brand">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap logo-icon" aria-hidden="true"></i>
+                <span class="logo-text">Meta <strong>Vestibular</strong></span>
+            </div>
+            <div class="login-brand-copy">
+                <span class="hero-tag">SEU ESPAÇO DE ESTUDOS</span>
+                <h1>Grandes sonhos exigem grandes preparações.</h1>
+                <p>Entre para acompanhar suas questões, salvar destaques e manter sua meta diária em dia.</p>
+            </div>
+            <div class="sidebar-waves" aria-hidden="true">
+                <div class="wave wave-1"></div>
+                <div class="wave wave-2"></div>
+            </div>
+        </aside>
+
+        <main class="login-panel">
+            <button type="button" class="login-theme-toggle" id="login-theme-toggle" aria-pressed="false" aria-label="Ativar modo escuro" title="Ativar modo escuro"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+            <div class="login-card">
+                <div class="login-tabs" role="tablist" aria-label="Acesso à conta">
+                    <button type="button" class="login-tab active" role="tab" id="tab-login" aria-selected="true" aria-controls="form-login" data-mode="login">Entrar</button>
+                    <button type="button" class="login-tab" role="tab" id="tab-register" aria-selected="false" aria-controls="form-register" data-mode="register">Criar conta</button>
+                </div>
+
+                <p class="login-error" id="login-error" role="alert" hidden></p>
+
+                <form class="login-form" id="form-login" role="tabpanel" aria-labelledby="tab-login" novalidate>
+                    <h2>Bem-vindo de volta</h2>
+                    <p class="login-sub">Entre com o e-mail e a senha que você cadastrou.</p>
+                    <label class="field-label" for="login-email">E-mail</label>
+                    <input class="login-field" id="login-email" name="email" type="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+                    <label class="field-label" for="login-password">Senha</label>
+                    <div class="password-wrap">
+                        <input class="login-field" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Sua senha" required>
+                        <button type="button" class="password-toggle" data-toggle-password="login-password" aria-label="Mostrar senha"><i class="fa-regular fa-eye" aria-hidden="true"></i></button>
+                    </div>
+                    <label class="remember"><input type="checkbox" name="remember" checked> Manter conectado neste navegador</label>
+                    <button class="btn-primary login-submit" type="submit">Entrar</button>
+                </form>
+
+                <form class="login-form" id="form-register" role="tabpanel" aria-labelledby="tab-register" hidden novalidate>
+                    <h2>Crie sua conta</h2>
+                    <p class="login-sub">Cada conta tem seu próprio progresso, destaques e configurações.</p>
+                    <label class="field-label" for="register-name">Nome</label>
+                    <input class="login-field" id="register-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="Como podemos chamar você?" required>
+                    <label class="field-label" for="register-email">E-mail</label>
+                    <input class="login-field" id="register-email" name="email" type="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+                    <label class="field-label" for="register-password">Senha</label>
+                    <div class="password-wrap">
+                        <input class="login-field" id="register-password" name="password" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo de 6 caracteres" required>
+                        <button type="button" class="password-toggle" data-toggle-password="register-password" aria-label="Mostrar senha"><i class="fa-regular fa-eye" aria-hidden="true"></i></button>
+                    </div>
+                    <label class="field-label" for="register-confirm">Confirmar senha</label>
+                    <input class="login-field" id="register-confirm" name="confirm" type="password" autocomplete="new-password" placeholder="Repita a senha" required>
+                    <label class="remember"><input type="checkbox" name="remember" checked> Manter conectado neste navegador</label>
+                    <button class="btn-primary login-submit" type="submit">Criar conta</button>
+                </form>
+
+                <p class="login-note">As contas ficam salvas somente neste navegador e não sincronizam entre dispositivos.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

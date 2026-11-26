@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiais didáticos | Meta Vestibular</title>
+    <script src="auth.js"></script>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/materiais.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+<div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-container">
+
+                <div class="logo">
+                    <i data-lucide="graduation-cap" class="logo-icon"></i>
+                    <span class="logo-text">Meta <strong>Vestibular</strong></span>
+                </div>
+            </div>
+
+            <nav class="nav-menu" aria-label="Navegação principal">
+                <a href="index.html" class="nav-item">
+                    <i data-lucide="home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="questoes.html" class="nav-item">
+                    <i data-lucide="edit-3"></i>
+                    <span>Questões</span>
+                </a>
+                <a href="materiais.html" class="nav-item active" aria-current="page">
+                    <i data-lucide="book-open"></i>
+                    <span>Materiais Didáticos</span>
+                </a>
+                <a href="livros.html" class="nav-item">
+                    <i data-lucide="library"></i>
+                    <span>Livros</span>
+                </a>
+                <a href="progresso.html" class="nav-item">
+                    <i data-lucide="bar-chart-2"></i>
+                    <span>Meu Progresso</span>
+                </a>
+                <a href="destaques.html" class="nav-item">
+                    <i data-lucide="star"></i>
+                    <span>Destaques</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-card">
+                    <i data-lucide="graduation-cap"></i>
+                    <p>Aprender fica mais fácil quando o conhecimento está ao seu alcance.</p>
+                </div>
+
+                <div class="sidebar-waves">
+                    <div class="wave wave-1"></div>
+                    <div class="wave wave-2"></div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-header">
+                <form class="search-bar" role="search">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input id="site-search" type="search" placeholder="Buscar questões, materiais, livros, etc..." aria-label="Buscar no site">
+                </form>
+
+                <div class="header-actions">
+                    <button class="header-theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Ativar modo escuro" title="Ativar modo escuro">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button class="icon-btn" type="button" aria-label="Abrir destaques" title="Destaques">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="profile-btn" type="button" aria-label="Abrir configurações" title="Configurações">
+                        <i data-lucide="user"></i>
+                    </button>
+                </div>
+            </header>
+        <main class="materials-main">
+            <div class="materials-content">
+                <section class="page-hero materials-hero">
+                    <span class="hero-tag"><i class="fa-solid fa-graduation-cap"></i> ROTEIRO DE ESTUDOS</span>
+                    <h1>Aprenda no seu ritmo. <span>Avance com propósito.</span></h1>
+                    <p>Encontre conteúdos gratuitos para revisar as principais matérias do Ensino Médio e se preparar para o ENEM e outros vestibulares.</p>
+                    <a class="btn-primary" href="#catalogo-materias">Explorar matérias <i class="fa-solid fa-arrow-down"></i></a>
+                </section>
+
+                <section class="section-header materials-heading" aria-labelledby="materials-title">
+                    <div>
+                        <h2 id="materials-title">Materiais por área do conhecimento</h2>
+                        <p>Escolha uma matéria para acessar um guia de estudo.</p>
+                    </div>
+                    <p class="pill-count materials-count" id="materials-count" aria-live="polite">8 matérias</p>
+                </section>
+
+                <section class="materials-grid" id="catalogo-materias" aria-label="Catálogo de materiais">
+                    <article class="surface-card is-link material-card" data-search="matemática álgebra geometria estatística números funções" data-favorite-card data-favorite-id="material-matematica" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-math"><i class="fa-solid fa-square-root-variable"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">MATEMÁTICA</span>
+                            <h3>Matemática e suas Tecnologias</h3>
+                            <p>Revise álgebra, geometria, estatística e raciocínio lógico com explicações e exercícios.</p>
+                            <a href="https://www.khanacademy.org/math?lang=pt" target="_blank" rel="noopener noreferrer">Estudar matemática <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                    <article class="surface-card is-link material-card" data-search="física mecânica eletricidade termodinâmica ondas energia" data-favorite-card data-favorite-id="material-fisica" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-physics"><i class="fa-solid fa-atom"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">CIÊNCIAS DA NATUREZA</span>
+                            <h3>Física</h3>
+                            <p>Entenda movimento, forças, eletricidade, ondas e transformações de energia.</p>
+                            <a href="https://brasilescola.uol.com.br/fisica" target="_blank" rel="noopener noreferrer">Estudar física <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                    <article class="surface-card is-link material-card" data-search="química matéria tabela periódica ligações reações orgânica" data-favorite-card data-favorite-id="material-quimica" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-chemistry"><i class="fa-solid fa-flask"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">CIÊNCIAS DA NATUREZA</span>
+                            <h3>Química</h3>
+                            <p>Estude matéria, tabela periódica, ligações, reações e química orgânica.</p>
+                            <a href="https://brasilescola.uol.com.br/quimica" target="_blank" rel="noopener noreferrer">Estudar química <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                    <article class="surface-card is-link material-card" data-search="biologia ecologia genética células evolução saúde" data-favorite-card data-favorite-id="material-biologia" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-biology"><i class="fa-solid fa-leaf"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">CIÊNCIAS DA NATUREZA</span>
+                            <h3>Biologia</h3>
+                            <p>Explore ecologia, genética, citologia, evolução e temas ligados à saúde.</p>
+                            <a href="https://brasilescola.uol.com.br/biologia" target="_blank" rel="noopener noreferrer">Estudar biologia <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                    <article class="surface-card is-link material-card" data-search="história brasil antiguidade idade média moderna contemporânea" data-favorite-card data-favorite-id="material-historia" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-history"><i class="fa-solid fa-landmark"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">CIÊNCIAS HUMANAS</span>
+                            <h3>História</h3>
+                            <p>Organize períodos históricos e conecte acontecimentos do Brasil e do mundo.</p>
+                            <a href="https://brasilescola.uol.com.br/historia" target="_blank" rel="noopener noreferrer">Estudar história <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                    <article class="surface-card is-link material-card" data-search="geografia cartografia clima população urbanização geopolítica" data-favorite-card data-favorite-id="material-geografia" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-geography"><i class="fa-solid fa-earth-americas"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">CIÊNCIAS HUMANAS</span>
+                            <h3>Geografia</h3>
+                            <p>Revise cartografia, clima, população, urbanização e questões geopolíticas.</p>
+                            <a href="https://brasilescola.uol.com.br/geografia" target="_blank" rel="noopener noreferrer">Estudar geografia <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                    <article class="surface-card is-link material-card" data-search="língua portuguesa gramática interpretação texto literatura redação" data-favorite-card data-favorite-id="material-portugues" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-language"><i class="fa-solid fa-book-open"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">LINGUAGENS</span>
+                            <h3>Língua Portuguesa</h3>
+                            <p>Pratique interpretação de texto, gramática, literatura e leitura crítica.</p>
+                            <a href="https://brasilescola.uol.com.br/gramatica" target="_blank" rel="noopener noreferrer">Estudar português <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                    <article class="surface-card is-link material-card" data-search="filosofia sociologia sociedade cidadania ética política" data-favorite-card data-favorite-id="material-humanidades" data-favorite-href="materiais.html#catalogo-materias">
+                        <div class="material-icon material-society"><i class="fa-solid fa-people-group"></i></div>
+                        <div class="material-card-body">
+                            <span class="eyebrow material-area">CIÊNCIAS HUMANAS</span>
+                            <h3>Filosofia e Sociologia</h3>
+                            <p>Conheça conceitos, pensadores e temas sociais recorrentes nos vestibulares.</p>
+                            <a href="https://brasilescola.uol.com.br/filosofia" target="_blank" rel="noopener noreferrer">Estudar humanidades <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </article>
+                </section>
+                <p class="materials-empty" id="materials-empty" hidden>Nenhuma matéria encontrada. Tente outro termo.</p>
+            </div>
+        </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-desc">
+            <div class="footer-logo">
+                <div class="footer-img">
+                    <img src="assets/metavestibular.png" class="logo-img" alt="Meta Vestibular">
+                </div>
+                <h2>Meta <span class="vestibular-word" id="footer-span">Vestibular</span></h2>
+            </div>
+
+            <p>Todas as matérias para ENEM, vestibulares e concursos militares. Centenas de conteúdos organizados para melhorar a sua rotina de estudos!</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Editais Oficiais</h3>
+            <a class="footer-a" href="https://s5.static.brasilescola.uol.com.br/enem/2026/05/1-enem-2026-edital.pdf">ENEM 2026 Edital</a>
+            <a class="footer-a" href="https://www.fuvest.br/arquivos/vestibular/fuvest2027-resolucao-DOE.pdf">FUVEST 2027 Edital</a>
+            <a class="footer-a" href="https://www.comvest.unicamp.br/wp-content/uploads/2026/07/VU2027-Manual-do-Ingresso.pdf">Unicamp 2027 Edital</a>
+
+        </div>
+
+        <div class="footer-col">
+            <h3>Conteúdos Recomendados</h3>
+            <a href="https://universonarrado.com.br/cursos/licoes-de-fisica" class="footer-a">Física com Universo Narrado (pago)</a>
+            <a href="https://universonarrado.com.br/cursos/licoes-de-matematica" class="footer-a">Matemática com Universo Narrado (pago)</a>
+            <a href="https://seliga.com.br/" class="footer-a">Ciências Humanas com Se Liga (pago)</a>
+            <a href="https://epifaniaexperiencia.com.br/" class="footer-a">Filosofia com Epifania Experiência (grátis)</a>
+            <a href="https://aluno.repertorioenem.com.br/dashboard" class="footer-a">Repertório ENEM - Questões e conteúdos (gratis)</a>
+            <a href="https://brasilescola.uol.com.br/" class="footer-a">Brasil escola (grátis)</a>
+
+        </div>
+
+        <div class="footer-col">
+            <h3>Suporte</h3>
+            <a class="footer-a" href="materiais.html#catalogo-materias">Central de materiais</a>
+            <a class="footer-a" href="https://github.com/Kilogabu">Github - Felipe</a>
+            <a class="footer-a" href="https://github.com/Kilogabu">Github - Boldrin</a>
+            <a class="footer-a" href="https://github.com/Kilogabu">Github - Guimarães</a>
+            <a class="footer-a" href="https://github.com/Kilogabu">Github - André</a>
+        </div>
+
+    </footer>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide){window.lucide.createIcons();}});</script>
+</body>
+
+</html>

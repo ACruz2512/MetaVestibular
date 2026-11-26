@@ -1,0 +1,568 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    gap: 28px;
+}
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-width: 0;
+}
+
+.hero-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero-content { max-width: 360px; z-index: 2; }
+.hero-content h1 { font-size: 1.65rem; }
+.hero-content p { margin-bottom: 22px; }
+
+.hero-illustration {
+    position: relative;
+    width: 240px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dots {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-image: radial-gradient(var(--dark-purple) 2px, transparent 2px);
+    background-size: 8px 8px;
+    opacity: 0.4;
+}
+
+.dots-top-left { top: 10px; left: 0; }
+.dots-top-right { top: 0; right: 10px; }
+.dots-bottom-center { bottom: 20px; left: 0; }
+
+.illustration-graphic {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grad-cap {
+    position: relative;
+    z-index: 3;
+    margin-bottom: -15px;
+}
+
+.cap-top {
+    width: 120px;
+    height: 40px;
+    background-color: var(--dark-purple);
+    transform: rotate(-10deg) skewX(-20deg);
+    border-radius: 4px;
+}
+
+.cap-base {
+    width: 60px;
+    height: 15px;
+    background-color: var(--card-purple);
+    margin: -10px auto 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.books-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+}
+
+.book {
+    height: 22px;
+    border-radius: 4px;
+    border: 2px solid var(--dark-purple);
+}
+
+.book-top {
+    width: 150px;
+    background-color: var(--dark-purple);
+}
+
+.book-middle {
+    width: 170px;
+    background-color: #ffffff;
+}
+
+.book-bottom {
+    width: 190px;
+    background-color: var(--dark-purple);
+}
+
+.quick-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.quick-card {
+    background-color: var(--card-purple);
+    color: var(--text-white);
+    padding: 24px 20px 20px;
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.quick-card:hover {
+    transform: translateY(-4px);
+    background-color: var(--card-purple-hover);
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 20px;
+}
+
+.quick-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.quick-card p {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.4;
+    margin-bottom: 24px;
+}
+
+.card-arrow {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activity-item {
+    background-color: #f8fafc;
+    border-radius: 14px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s ease;
+}
+
+.activity-item:hover {
+    background-color: #f1f5f9;
+}
+
+.activity-icon {
+    color: var(--dark-purple);
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.activity-icon i {
+    width: 22px;
+    height: 22px;
+}
+
+.activity-info {
+    flex: 1;
+}
+
+.activity-info h4 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--dark-purple);
+    margin-bottom: 2px;
+}
+
+.activity-info span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.activity-status {
+    margin-right: 20px;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.badge-mint {
+    background-color: var(--accent-mint);
+    color: var(--mint-text);
+}
+
+.activity-arrow {
+    width: 16px;
+    height: 16px;
+    color: var(--dark-purple);
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.progress-card {
+    background-color: #e6f9f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.donut-chart-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 16px;
+}
+
+.donut-chart {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.donut-bg {
+    fill: none;
+    stroke: #ccf2ed;
+    stroke-width: 8;
+}
+
+.donut-fill {
+    fill: none;
+    stroke: #00cfb4;
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.donut-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donut-label {
+    font-size: 0.65rem;
+    color: var(--dark-purple);
+    font-weight: 700;
+}
+
+.donut-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--dark-purple);
+    line-height: 1;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #c5f2eb;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #00cfb4;
+    border-radius: 4px;
+}
+
+.progress-card h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--dark-purple);
+    margin-bottom: 6px;
+    align-self: flex-start;
+}
+
+.progress-card p {
+    font-size: 0.8rem;
+    color: #475569;
+    line-height: 1.4;
+    text-align: left;
+    width: 100%;
+}
+
+.highlights-card {
+    background-color: #e6f9f6;
+}
+
+.highlights-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.star-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--dark-purple);
+}
+
+.highlights-header h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--dark-purple);
+}
+
+.highlight-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.highlight-item:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-icon {
+    color: var(--dark-purple);
+    margin-top: 2px;
+}
+
+.highlight-icon i {
+    width: 20px;
+    height: 20px;
+}
+
+.highlight-info {
+    flex: 1;
+    padding-right: 12px;
+}
+
+.highlight-info h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--dark-purple);
+    margin-bottom: 4px;
+}
+
+.highlight-info p {
+    font-size: 0.73rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+}
+
+.highlight-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    color: var(--dark-purple);
+}
+
+.motivational-card {
+    background-color: var(--card-purple);
+    color: var(--text-white);
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+}
+
+.motivational-content {
+    position: relative;
+    z-index: 2;
+}
+
+.rocket-wrapper {
+    margin-bottom: 16px;
+}
+
+.rocket-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--text-white);
+}
+
+.motivational-card h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.motivational-card p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+}
+
+.card-waves {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 150px;
+    height: 100px;
+    pointer-events: none;
+}
+
+.m-wave {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #00cfb4;
+}
+
+.m-wave-1 {
+    width: 120px;
+    height: 120px;
+    bottom: -40px;
+    right: -20px;
+    opacity: 0.5;
+}
+
+.m-wave-2 {
+    width: 160px;
+    height: 160px;
+    bottom: -60px;
+    right: -40px;
+    background: rgba(0, 207, 180, 0.3);
+    border: none;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .right-column {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .quick-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .right-column {
+        grid-template-columns: 1fr;
+    }
+}
+
+.meta-articles-section { display:flex; flex-direction:column; gap:16px; }
+.meta-articles-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.meta-article-card { min-width:0; overflow:hidden; display:flex; flex-direction:column; background:#fff; border:1px solid #e8edf0; border-radius:16px; color:inherit; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease; }
+.meta-article-card:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(28,20,69,.09); }
+.meta-article-card>img { display:block; width:100%; height:145px; object-fit:cover; }
+.meta-article-content { padding:17px 17px 19px; }
+.meta-article-content>span { display:inline-block; margin-bottom:9px; color:#008775; font-size:.67rem; font-weight:800; letter-spacing:.45px; }
+.meta-article-content h3 { margin-bottom:8px; color:var(--dark-purple); font-size:.94rem; line-height:1.35; }
+.meta-article-content p { color:#64748b; font-size:.77rem; line-height:1.5; }
+.meta-physics-promo { display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:24px; padding:28px; border-radius:20px; background:linear-gradient(135deg,#e7faf5,#d4f5ed); }
+.meta-promo-eyebrow { display:inline-block; margin-bottom:10px; color:#008775; font-size:.68rem; font-weight:800; letter-spacing:.7px; }
+.meta-physics-copy h2 { max-width:440px; margin-bottom:10px; color:var(--dark-purple); font-size:1.45rem; line-height:1.25; }
+.meta-physics-copy p { max-width:540px; color:#405b56; font-size:.84rem; line-height:1.55; }
+.meta-physics-card { padding:22px; border-radius:16px; background:#241756; color:#fff; box-shadow:0 8px 22px rgba(28,20,69,.12); }
+.meta-course-label { display:block; margin-bottom:12px; color:#9be9d9; font-size:.62rem; font-weight:800; letter-spacing:.55px; }
+.meta-physics-card h3 { margin-bottom:8px; font-size:1.1rem; }
+.meta-physics-card p { margin-bottom:15px; color:rgba(255,255,255,.78); font-size:.78rem; line-height:1.5; }
+.meta-physics-card a { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:20px; background:#a5eedf; color:#1c1445; font-size:.76rem; font-weight:800; text-decoration:none; }
+.meta-physics-card a:hover { background:#fff; }
+.meta-physics-card small { display:block; margin-top:13px; color:rgba(255,255,255,.58); font-size:.68rem; }
+@media(max-width:1050px) { .meta-articles-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .meta-article-card:last-child { grid-column:1/-1; } }
+@media(max-width:700px) { .meta-articles-grid { grid-template-columns:1fr; } .meta-article-card:last-child { grid-column:auto; } .meta-article-card>img { height:180px; } .meta-physics-promo { grid-template-columns:1fr; padding:20px; } }
+.donut-fill { transition: stroke-dashoffset .35s ease; }
+.progress-bar-fill { transition: width .35s ease; }
+.progress-count { margin: 0 0 6px; font-size: .72rem !important; font-weight: 800; color: #008775 !important; }
+
+.activity-item:focus-visible, .highlight-item:focus-visible, .progress-card:focus-visible,
+.quick-card:focus-visible {
+    outline: 3px solid #00b99b;
+    outline-offset: 3px;
+}
+.quick-card { color: var(--text-white); text-decoration: none; cursor: pointer; }
+.quick-card .card-icon { color: var(--accent-mint); }
+.quick-card h3 { color: var(--text-white); }
+.quick-card p { color: rgba(255, 255, 255, .88); }
+
+html[data-theme="dark"] .section-header h2,
+html[data-theme="dark"] .activity-info h4,
+html[data-theme="dark"] .activity-icon,
+html[data-theme="dark"] .activity-arrow { color: #edf2fa; }
+html[data-theme="dark"] .activity-item { background: #1b2535; }
+html[data-theme="dark"] .activity-item:hover { background: #253247; }
+html[data-theme="dark"] .activity-info span,
+html[data-theme="dark"] .highlight-info p { color: #b6c2d2; }
+html[data-theme="dark"] .progress-card,
+html[data-theme="dark"] .highlights-card { background: #1a2935; }
+html[data-theme="dark"] .progress-card h3,
+html[data-theme="dark"] .progress-card p,
+html[data-theme="dark"] .donut-label,
+html[data-theme="dark"] .donut-value,
+html[data-theme="dark"] .highlights-header h3,
+html[data-theme="dark"] .star-icon,
+html[data-theme="dark"] .highlight-icon,
+html[data-theme="dark"] .highlight-info h4,
+html[data-theme="dark"] .highlight-arrow { color: #e8edf5; }
+html[data-theme="dark"] .donut-bg { stroke: #344653; }
+html[data-theme="dark"] .progress-bar-container { background: #344653; }
+html[data-theme="dark"] .highlight-item,
+html[data-theme="dark"] .meta-article-card { background: #1b2535; border-color: #344154; }
+html[data-theme="dark"] .meta-article-content h3 { color: #edf2fa; }
+html[data-theme="dark"] .meta-article-content p { color: #b6c2d2; }
+html[data-theme="dark"] .meta-physics-promo { background: linear-gradient(135deg,#1b3836,#202d3c); }
+html[data-theme="dark"] .meta-physics-copy h2 { color: #f0f5fa; }
+html[data-theme="dark"] .meta-physics-copy p { color: #c4d1dd; }
+
+html[data-contrast="high"] .highlight-item,
+html[data-contrast="high"] .meta-article-card { border: 2px solid #111; }
+html[data-contrast="high"] .activity-info h4,
+html[data-contrast="high"] .section-header h2,
+html[data-contrast="high"] .meta-article-content h3 { color: #111; }
+html[data-contrast="high"] .activity-info span,
+html[data-contrast="high"] .meta-article-content p { color: #222; }
+
+@media (max-width: 600px) {
+    .hero-banner { padding: 22px 18px; }
+    .hero-illustration { display: none; }
+    .hero-content h1 { font-size: 1.42rem; }
+    .quick-cards-grid { grid-template-columns: 1fr; }
+    .right-column { display: flex; flex-direction: column; }
+    .meta-articles-grid { grid-template-columns: 1fr; }
+    .meta-article-card:last-child { grid-column: auto; }
+    .meta-physics-promo { grid-template-columns: 1fr; padding: 20px; }
+}
+
+.activity-item[role="link"] { cursor: pointer; }
+.badge-miss { background-color: #fff0ef; color: #a83333; }
+.activity-empty { gap: 16px; cursor: default; flex-wrap: wrap; }
+html[data-theme="dark"] .badge-miss { background-color: #3a252e; color: #ffb6c1; }

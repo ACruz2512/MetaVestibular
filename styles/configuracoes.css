@@ -1,0 +1,122 @@
+.settings-hero { margin-bottom: 22px; }
+
+.settings-form { display: grid; gap: 14px; }
+
+.settings-card { padding: 24px; }
+
+.settings-card-heading { margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+.settings-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--accent-mint);
+    color: var(--mint-text);
+}
+.settings-card h2 { color: var(--heading); font-size: 1.05rem; font-weight: 800; }
+.settings-card-heading p,
+.field-help { color: var(--text-muted); font-size: .75rem; line-height: 1.4; }
+
+.field-label { margin-bottom: 6px; display: block; color: var(--text-soft); font-size: .78rem; font-weight: 800; }
+
+.text-field {
+    width: min(100%, 420px);
+    min-height: 44px;
+    padding: 9px 16px;
+    border: 1px solid var(--field-border);
+    border-radius: 20px;
+    background: var(--field-bg);
+    color: var(--text-dark);
+    font-size: .88rem;
+}
+.text-field:focus { border-color: var(--mint-text); outline: 3px solid var(--mint-dark); outline-offset: 1px; }
+
+.goal-field { display: flex; align-items: center; gap: 10px; }
+.goal-field .text-field { width: 130px; }
+.goal-field span { color: var(--text-muted); font-size: .8rem; }
+.field-help { margin-top: 6px; }
+
+.setting-switch {
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    cursor: pointer;
+}
+.setting-switch + .setting-switch { border-top: 1px solid var(--border); }
+.setting-switch strong,
+.setting-switch small { display: block; }
+.setting-switch strong { color: var(--text-soft); font-size: .8rem; }
+.setting-switch small { margin-top: 2px; color: var(--text-muted); font-size: .7rem; }
+.setting-switch input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+}
+
+.switch-ui {
+    width: 44px;
+    height: 25px;
+    flex: 0 0 44px;
+    position: relative;
+    border-radius: 20px;
+    background: #cbd2dc;
+    transition: background-color .2s ease;
+}
+.switch-ui::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform .2s ease;
+}
+.setting-switch input:checked + .switch-ui { background: #00a892; }
+.setting-switch input:checked + .switch-ui::after { transform: translateX(19px); }
+.setting-switch input:focus-visible + .switch-ui { outline: 3px solid var(--dark-purple); outline-offset: 3px; }
+
+.settings-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.save-settings,
+.reset-study {
+    min-height: 44px;
+    padding: 10px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 25px;
+    font-size: .85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+}
+.save-settings { border: 0; background: var(--dark-purple); color: var(--text-white); }
+.save-settings:hover { background: var(--card-purple); }
+.reset-study { border: 1px solid #e2c7cc; background: var(--surface); color: #9f354b; }
+.reset-study:hover { background: #fff1f3; }
+
+.settings-status { min-height: 20px; color: var(--ok); font-size: .8rem; }
+
+html[data-theme="dark"] .save-settings { background: var(--mint-dark); color: var(--dark-purple); }
+html[data-theme="dark"] .save-settings:hover { background: #c2f6e8; }
+html[data-theme="dark"] .switch-ui { background: #536076; }
+html[data-theme="dark"] .reset-study { border-color: #744450; background: #2a2029; color: #ffb6c1; }
+html[data-theme="dark"] .reset-study:hover { background: #3a252e; }
+html[data-theme="dark"] .settings-icon { background: #183c39; color: #9edecb; }
+html[data-theme="dark"] .field-label { color: #8de3cd; }
+html[data-theme="dark"] .text-field::placeholder { color: #b5c0d0; }
+
+@media (max-width: 480px) {
+    .settings-actions { align-items: stretch; flex-direction: column; }
+    .settings-actions button { width: 100%; }
+}

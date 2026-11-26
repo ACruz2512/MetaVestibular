@@ -1,0 +1,122 @@
+.books-hero { min-height: 260px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.books-hero-copy { max-width: 650px; }
+
+.books-hero-art { position: relative; width: 220px; height: 205px; flex: 0 0 220px; }
+.book-art {
+    position: absolute;
+    width: 132px;
+    height: 176px;
+    border-radius: 7px 13px 13px 7px;
+    box-shadow: 12px 15px 25px #1c14452b;
+}
+.book-art-back { top: 15px; left: 60px; background: var(--card-purple-hover); transform: rotate(13deg); }
+.book-art-front {
+    top: 15px;
+    left: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-left: 8px solid var(--mint-dark);
+    background: linear-gradient(145deg, var(--dark-purple), var(--card-purple));
+    color: var(--accent-mint);
+    text-align: center;
+    transform: rotate(-8deg);
+}
+.book-art-front i { font-size: 42px; }
+.book-art-front span { font-size: .65rem; font-weight: 800; line-height: 1.5; letter-spacing: .5px; }
+.book-art-spark { position: absolute; top: 0; right: 0; color: var(--dark-purple); font-size: 26px; }
+
+.books-intro { margin: 30px 0 16px; align-items: flex-end; }
+
+.books-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+
+.book-card { display: flex; flex-direction: column; overflow: hidden; }
+
+.book-cover {
+    height: 174px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+.book-cover::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    bottom: -105px;
+    width: 190px;
+    height: 190px;
+    border: 1px solid #ffffff2b;
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px #ffffff0d, 0 0 0 38px #ffffff0a;
+}
+.cover-label { margin-bottom: 8px; font-size: .6rem; font-weight: 800; letter-spacing: .5px; opacity: .85; }
+.book-cover i { margin-bottom: 6px; font-size: 25px; }
+.book-cover strong { font-size: 1.3rem; line-height: 1.05; }
+.book-cover small { margin-top: 7px; font-size: .65rem; }
+.cover-natureza { background: linear-gradient(130deg, #087e75, #18b89c); }
+.cover-humanas { background: linear-gradient(130deg, #30216d, #7052b8); }
+.cover-linguagens { background: linear-gradient(130deg, #9a315d, #d75a82); }
+.cover-matematica { background: linear-gradient(130deg, #164e8a, #328ac1); }
+
+.book-card-body { padding: 18px 17px 19px; display: flex; flex: 1; flex-direction: column; }
+.book-card h3 { margin: 7px 0 8px; color: var(--heading); font-size: .94rem; line-height: 1.35; }
+.book-card p { color: var(--text-muted); font-size: .77rem; line-height: 1.5; }
+
+.book-card-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+}
+.book-card-footer span { color: var(--text-muted); font-size: .7rem; white-space: nowrap; }
+.book-card-footer span i { color: #d94b66; }
+.book-card-footer a { color: var(--link); font-size: .78rem; font-weight: 800; }
+.book-card-footer a:hover,
+.books-notice a:hover { text-decoration: underline; }
+
+.books-empty { padding: 30px 10px; color: var(--text-muted); text-align: center; }
+
+.books-notice {
+    margin-top: 24px;
+    padding: 20px;
+    display: flex;
+    gap: 14px;
+    border-left: 4px solid var(--mint-dark);
+}
+.notice-icon { flex: 0 0 auto; color: var(--mint-text); font-size: 22px; }
+.books-notice h3 { margin-bottom: 4px; color: var(--heading); font-size: .94rem; }
+.books-notice p { color: var(--text-muted); font-size: .77rem; line-height: 1.5; }
+.books-notice a { margin-top: 7px; display: inline-block; color: var(--link); font-size: .78rem; font-weight: 800; }
+.books-source { margin: 14px 2px 0; color: var(--text-muted); font-size: .65rem; }
+
+html[data-theme="dark"] .book-art-spark { color: var(--mint-dark); }
+
+@media (max-width: 900px) {
+    .books-hero-art { transform: scale(.9); transform-origin: center right; }
+}
+@media (max-width: 700px) {
+    .books-hero { min-height: 0; }
+    .books-hero-art { display: none; }
+    .books-intro { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .books-grid { gap: 14px; }
+    .book-cover { height: 158px; padding: 14px 18px; }
+    .book-card-body { padding: 15px; }
+}
+@media (max-width: 560px) {
+    .books-grid { grid-template-columns: minmax(0, 1fr); }
+    .book-card-footer { flex-wrap: wrap; }
+    .books-notice { padding: 16px 14px; gap: 10px; }
+}
+@media (max-width: 380px) {
+    .book-card-footer { align-items: flex-start; flex-direction: column; }
+}

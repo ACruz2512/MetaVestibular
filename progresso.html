@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Progresso | Meta Vestibular</title>
+    <script src="auth.js"></script>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/progresso.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+<div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-container">
+
+                <div class="logo">
+                    <i data-lucide="graduation-cap" class="logo-icon"></i>
+                    <span class="logo-text">Meta <strong>Vestibular</strong></span>
+                </div>
+            </div>
+
+            <nav class="nav-menu" aria-label="Navegação principal">
+                <a href="index.html" class="nav-item">
+                    <i data-lucide="home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="questoes.html" class="nav-item">
+                    <i data-lucide="edit-3"></i>
+                    <span>Questões</span>
+                </a>
+                <a href="materiais.html" class="nav-item">
+                    <i data-lucide="book-open"></i>
+                    <span>Materiais Didáticos</span>
+                </a>
+                <a href="livros.html" class="nav-item">
+                    <i data-lucide="library"></i>
+                    <span>Livros</span>
+                </a>
+                <a href="progresso.html" class="nav-item active" aria-current="page">
+                    <i data-lucide="bar-chart-2"></i>
+                    <span>Meu Progresso</span>
+                </a>
+                <a href="destaques.html" class="nav-item">
+                    <i data-lucide="star"></i>
+                    <span>Destaques</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-card">
+                    <i data-lucide="graduation-cap"></i>
+                    <p>A constância de hoje constrói os resultados de amanhã.</p>
+                </div>
+
+                <div class="sidebar-waves">
+                    <div class="wave wave-1"></div>
+                    <div class="wave wave-2"></div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-header">
+                <form class="search-bar" role="search">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input id="site-search" type="search" placeholder="Buscar questões, materiais, livros, etc..." aria-label="Buscar no site">
+                </form>
+
+                <div class="header-actions">
+                    <button class="header-theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Ativar modo escuro" title="Ativar modo escuro">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button class="icon-btn" type="button" aria-label="Abrir destaques" title="Destaques">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="profile-btn" type="button" aria-label="Abrir configurações" title="Configurações">
+                        <i data-lucide="user"></i>
+                    </button>
+                </div>
+            </header>
+        <main class="progress-main" data-total-questions="90">
+            <div class="progress-content">
+                <section class="page-hero progress-hero">
+                    <span class="hero-tag"><i class="fa-solid fa-chart-line"></i> SUA JORNADA DE APRENDIZADO</span>
+                    <h1>Continue avançando, <span data-student-name>estudante</span>.</h1>
+                    <p>Seu progresso é atualizado a cada resposta e fica guardado neste dispositivo.</p>
+                    <a class="btn-primary" href="questoes.html">Responder questões <i class="fa-solid fa-arrow-right"></i></a>
+                </section>
+
+                <section class="progress-overview" aria-label="Resumo do progresso">
+                    <article class="surface-card progress-panel task-panel">
+                        <div>
+                            <span class="eyebrow panel-eyebrow">TAREFAS CONCLUÍDAS</span>
+                            <h2>Questões respondidas</h2>
+                            <p>Responda cada questão do banco para completar sua meta de prática.</p>
+                        </div>
+                        <div class="progress-ring" id="task-progress" role="progressbar" aria-label="Questões respondidas" aria-valuemin="0" aria-valuemax="90" aria-valuenow="0">
+                            <div class="progress-ring-center"><strong id="completed-tasks">0</strong><span>de 90</span></div>
+                        </div>
+                    </article>
+
+                    <article class="surface-card progress-panel accuracy-panel">
+                        <div class="panel-title">
+                            <div><span class="eyebrow panel-eyebrow">DESEMPENHO</span><h2>Acertos e erros</h2></div>
+                            <span class="attempt-count"><span id="attempt-count">0</span> respostas</span>
+                        </div>
+                        <div class="metric-row">
+                            <div class="metric-label"><span><i class="fa-solid fa-circle-check"></i> Acertos</span><strong id="correct-percentage">0%</strong></div>
+                            <div class="metric-track" id="correct-progress" role="progressbar" aria-label="Percentual de acertos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+                            <p class="metric-note"><span id="correct-count">0</span> respostas corretas</p>
+                        </div>
+                        <div class="metric-row">
+                            <div class="metric-label"><span><i class="fa-solid fa-circle-xmark"></i> Erros</span><strong id="error-percentage">0%</strong></div>
+                            <div class="metric-track error-track" id="error-progress" role="progressbar" aria-label="Percentual de erros" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+                            <p class="metric-note"><span id="error-count">0</span> respostas incorretas</p>
+                        </div>
+                        <p class="accuracy-footnote">Os percentuais consideram todas as tentativas, inclusive quando você refaz uma questão.</p>
+                    </article>
+                </section>
+
+                <section class="surface-card daily-panel">
+                    <div class="daily-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <div class="daily-info">
+                        <div class="daily-heading"><div><span class="eyebrow panel-eyebrow">META DIÁRIA</span><h2>Um passo de cada vez</h2></div><strong><span id="today-count">0</span> / <span id="daily-goal-count">10</span> questões</strong></div>
+                        <div class="daily-track" id="daily-goal-progress" role="progressbar" aria-label="Progresso da meta diária" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span></span></div>
+                        <p>Defina sua meta na página de <a href="configuracoes.html">Configurações</a>.</p>
+                    </div>
+                </section>
+                <p class="progress-empty" id="progress-empty">Responda sua primeira questão para começar a acompanhar seu desempenho.</p>
+            </div>
+        </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-desc"><div class="footer-logo"><div class="footer-img"><img src="assets/metavestibular.png" class="logo-img" alt="Meta Vestibular"></div><h2>Meta <span class="vestibular-word">Vestibular</span></h2></div><p>Seu ritmo, suas metas e seu avanço nos estudos.</p></div>
+        <div class="footer-col"><h3>Estudos</h3><a class="footer-a" href="questoes.html">Questões</a><a class="footer-a" href="materiais.html">Materiais didáticos</a><a class="footer-a" href="livros.html">Biblioteca de livros</a></div>
+        <div class="footer-col"><h3>Acompanhe</h3><a class="footer-a" href="progresso.html">Meu Progresso</a><a class="footer-a" href="destaques.html">Destaques salvos</a><a class="footer-a" href="configuracoes.html">Configurações</a></div>
+        <div class="footer-col"><h3>Fontes</h3><a class="footer-a" href="https://www.gov.br/inep/pt-br">Inep</a><a class="footer-a" href="https://brasilescola.uol.com.br/">Brasil Escola</a></div>
+    </footer>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide){window.lucide.createIcons();}});</script>
+</body>
+</html>

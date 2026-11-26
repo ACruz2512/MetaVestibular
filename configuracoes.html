@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Meta Vestibular</title>
+    <script src="auth.js"></script>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/configuracoes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+<div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-container">
+
+                <div class="logo">
+                    <i data-lucide="graduation-cap" class="logo-icon"></i>
+                    <span class="logo-text">Meta <strong>Vestibular</strong></span>
+                </div>
+            </div>
+
+            <nav class="nav-menu" aria-label="Navegação principal">
+                <a href="index.html" class="nav-item">
+                    <i data-lucide="home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="questoes.html" class="nav-item">
+                    <i data-lucide="edit-3"></i>
+                    <span>Questões</span>
+                </a>
+                <a href="materiais.html" class="nav-item">
+                    <i data-lucide="book-open"></i>
+                    <span>Materiais Didáticos</span>
+                </a>
+                <a href="livros.html" class="nav-item">
+                    <i data-lucide="library"></i>
+                    <span>Livros</span>
+                </a>
+                <a href="progresso.html" class="nav-item">
+                    <i data-lucide="bar-chart-2"></i>
+                    <span>Meu Progresso</span>
+                </a>
+                <a href="destaques.html" class="nav-item">
+                    <i data-lucide="star"></i>
+                    <span>Destaques</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item active" aria-current="page">
+                    <i data-lucide="settings"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-card">
+                    <i data-lucide="graduation-cap"></i>
+                    <p>Organize seu espaço de estudos para aprender do seu jeito.</p>
+                </div>
+
+                <div class="sidebar-waves">
+                    <div class="wave wave-1"></div>
+                    <div class="wave wave-2"></div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-header">
+                <form class="search-bar" role="search">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input id="site-search" type="search" placeholder="Buscar questões, materiais, livros, etc..." aria-label="Buscar no site">
+                </form>
+
+                <div class="header-actions">
+                    <button class="header-theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Ativar modo escuro" title="Ativar modo escuro">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button class="icon-btn" type="button" aria-label="Abrir destaques" title="Destaques">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="profile-btn" type="button" aria-label="Abrir configurações" title="Configurações">
+                        <i data-lucide="user"></i>
+                    </button>
+                </div>
+            </header>
+        <main class="settings-main">
+            <div class="settings-content">
+                <section class="page-hero settings-hero">
+                    <span class="hero-tag"><i class="fa-solid fa-sliders"></i> PERSONALIZE SUA ROTINA</span>
+                    <h1>Configurações <span>do seu espaço.</span></h1>
+                    <p>Escolha como quer acompanhar seus estudos. As preferências ficam salvas neste dispositivo.</p>
+                </section>
+
+                <form class="settings-form" id="settings-form">
+                    <section class="surface-card settings-card" aria-labelledby="profile-settings-title">
+                        <div class="settings-card-heading"><span class="settings-icon"><i class="fa-regular fa-user"></i></span><div><h2 id="profile-settings-title">Seu perfil de estudos</h2><p>Use um nome para personalizar sua página de progresso.</p></div></div>
+                        <label class="field-label" for="student-name">Como podemos chamar você?</label>
+                        <input class="text-field" id="student-name" name="studentName" type="text" maxlength="40" autocomplete="given-name" placeholder="Seu nome">
+                    </section>
+
+                    <section class="surface-card settings-card" aria-labelledby="goal-settings-title">
+                        <div class="settings-card-heading"><span class="settings-icon"><i class="fa-solid fa-bullseye"></i></span><div><h2 id="goal-settings-title">Meta diária</h2><p>Defina quantas questões deseja responder por dia.</p></div></div>
+                        <label class="field-label" for="daily-goal">Questões por dia</label>
+                        <div class="goal-field"><input class="text-field" id="daily-goal" name="dailyGoal" type="number" min="1" max="100" step="1" required><span>questões</span></div>
+                        <p class="field-help">Escolha um número entre 1 e 100. Você pode alterar sua meta quando quiser.</p>
+                    </section>
+
+                    <section class="surface-card settings-card" aria-labelledby="accessibility-settings-title">
+                        <div class="settings-card-heading"><span class="settings-icon"><i class="fa-solid fa-universal-access"></i></span><div><h2 id="accessibility-settings-title">Acessibilidade</h2><p>Ajustes visuais que se aplicam a todas as páginas.</p></div></div>
+                        <label class="setting-switch" for="high-contrast"><span><strong>Alto contraste</strong><small>Reforce o contraste entre textos, fundos e controles.</small></span><input id="high-contrast" name="highContrast" type="checkbox"><span class="switch-ui" aria-hidden="true"></span></label>
+                        <label class="setting-switch" for="reduce-motion"><span><strong>Reduzir animações</strong><small>Reduza movimentos e transições da interface.</small></span><input id="reduce-motion" name="reduceMotion" type="checkbox"><span class="switch-ui" aria-hidden="true"></span></label>
+                    </section>
+
+                    <div class="settings-actions">
+                        <button class="save-settings" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar configurações</button>
+                        <button class="reset-study" type="button" data-reset-study><i class="fa-solid fa-trash-can"></i> Apagar meu progresso</button>
+                    </div>
+                    <p class="settings-status" id="settings-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-desc"><div class="footer-logo"><div class="footer-img"><img src="assets/metavestibular.png" class="logo-img" alt="Meta Vestibular"></div><h2>Meta <span class="vestibular-word">Vestibular</span></h2></div><p>Personalize sua rotina de estudos de acordo com suas necessidades.</p></div>
+        <div class="footer-col"><h3>Estudos</h3><a class="footer-a" href="questoes.html">Questões</a><a class="footer-a" href="materiais.html">Materiais didáticos</a><a class="footer-a" href="livros.html">Biblioteca de livros</a></div>
+        <div class="footer-col"><h3>Acompanhe</h3><a class="footer-a" href="progresso.html">Meu Progresso</a><a class="footer-a" href="destaques.html">Destaques salvos</a><a class="footer-a" href="configuracoes.html">Configurações</a></div>
+        <div class="footer-col"><h3>Fontes</h3><a class="footer-a" href="https://www.gov.br/inep/pt-br">Inep</a><a class="footer-a" href="https://brasilescola.uol.com.br/">Brasil Escola</a></div>
+    </footer>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide){window.lucide.createIcons();}});</script>
+</body>
+</html>

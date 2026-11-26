@@ -1,0 +1,104 @@
+.questions-hero { margin-bottom: 30px; }
+.questions-section { scroll-margin-top: 90px; }
+
+.questions-heading { align-items: flex-end; }
+.questions-heading .link-see-all { white-space: nowrap; }
+
+.questions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+}
+
+.question-card { padding: 22px; }
+
+.question-card-heading {
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.question-number { color: #9aa3b1; font-size: .75rem; font-weight: 700; }
+
+.question-card h3 { margin-bottom: 8px; color: var(--heading); font-size: 1.05rem; line-height: 1.35; }
+.question-card[data-category="matematica"] h3 { color: #2859b9; }
+.question-card[data-category="fisica"] h3 { color: #087e75; }
+.question-card[data-category="quimica"] h3 { color: #a93766; }
+.question-card[data-category="biologia"] h3 { color: #397a4c; }
+.question-card[data-category="historia"] h3 { color: #6044a4; }
+.question-card[data-category="geografia"] h3 { color: #067c71; }
+.question-card[data-category="portugues"] h3 { color: #a2385e; }
+.question-card[data-category="filosofia"] h3 { color: #66519a; }
+.question-card[data-category="sociologia"] h3 { color: #8a5a2b; }
+
+.question-prompt { margin-bottom: 14px; color: var(--text-soft); font-size: .85rem; line-height: 1.5; }
+
+.question-form fieldset { min-width: 0; display: grid; gap: 8px; border: 0; }
+.question-form legend { margin-bottom: 8px; color: var(--text-muted); font-size: .75rem; font-weight: 700; }
+
+.question-form fieldset label {
+    padding: 10px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-soft);
+    color: var(--text-soft);
+    font-size: .8rem;
+    line-height: 1.45;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease;
+}
+.question-form fieldset label:hover { background: var(--surface-mint); }
+.question-form fieldset label.selected { border-color: var(--mint-text); background: var(--surface-mint); }
+.question-form input[type="radio"] { margin-top: 3px; flex: 0 0 auto; accent-color: var(--mint-text); }
+
+.question-feedback,
+.question-explanation { margin-top: 12px; padding: 10px 14px; border-radius: 12px; font-size: .8rem; }
+.question-feedback[data-result="correct"] { background: #e8f8ef; color: #17613c; font-weight: 800; }
+.question-feedback[data-result="incorrect"],
+.question-feedback[data-result="invalid"] { background: #fff0ef; color: #a83333; font-weight: 800; }
+.question-explanation { background: var(--surface-soft); color: var(--text-soft); }
+
+.question-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+.answer-button,
+.retry-button {
+    min-height: 40px;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.answer-button { border: 0; background: var(--dark-purple); color: var(--text-white); }
+.answer-button:hover { background: var(--card-purple); }
+.retry-button { border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-soft); }
+.retry-button:hover { border-color: var(--mint-text); color: var(--mint-text); }
+
+.questions-empty { padding: 30px 10px; color: var(--text-muted); text-align: center; }
+
+html[data-theme="dark"] .question-card[data-category="matematica"] h3 { color: #8eb3ff; }
+html[data-theme="dark"] .question-card[data-category="fisica"] h3 { color: #75e3c9; }
+html[data-theme="dark"] .question-card[data-category="quimica"] h3 { color: #ff9fbd; }
+html[data-theme="dark"] .question-card[data-category="biologia"] h3 { color: #a9e995; }
+html[data-theme="dark"] .question-card[data-category="historia"] h3 { color: #c0adff; }
+html[data-theme="dark"] .question-card[data-category="geografia"] h3 { color: #80e2d4; }
+html[data-theme="dark"] .question-card[data-category="portugues"] h3 { color: #ffa6c0; }
+html[data-theme="dark"] .question-card[data-category="filosofia"] h3 { color: #d3b5ff; }
+html[data-theme="dark"] .question-card[data-category="sociologia"] h3 { color: #e8c380; }
+html[data-theme="dark"] .question-number { color: #9eabba; }
+html[data-theme="dark"] .question-form legend { color: #8de3cd; }
+html[data-theme="dark"] .question-form fieldset label.selected { border-color: #51c7a8; background: #183c39; }
+html[data-theme="dark"] .answer-button { background: var(--mint-dark); color: var(--dark-purple); }
+html[data-theme="dark"] .answer-button:hover { background: #c2f6e8; }
+
+@media (max-width: 760px) { .questions-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) {
+    .questions-heading { align-items: flex-start; flex-direction: column; }
+    .question-card { padding: 16px; }
+}

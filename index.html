@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Vestibular</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="auth.js"></script>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar">
+            <div class="logo-container">
+
+                <div class="logo">
+                    <i data-lucide="graduation-cap" class="logo-icon"></i>
+                    <span class="logo-text">Meta <strong>Vestibular</strong></span>
+                </div>
+            </div>
+
+            <nav class="nav-menu" aria-label="Navegação principal">
+                <a href="index.html" class="nav-item active" aria-current="page">
+                    <i data-lucide="home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="questoes.html" class="nav-item">
+                    <i data-lucide="edit-3"></i>
+                    <span>Questões</span>
+                </a>
+                <a href="materiais.html" class="nav-item">
+                    <i data-lucide="book-open"></i>
+                    <span>Materiais Didáticos</span>
+                </a>
+                <a href="livros.html" class="nav-item">
+                    <i data-lucide="library"></i>
+                    <span>Livros</span>
+                </a>
+                <a href="progresso.html" class="nav-item">
+                    <i data-lucide="bar-chart-2"></i>
+                    <span>Meu Progresso</span>
+                </a>
+                <a href="destaques.html" class="nav-item">
+                    <i data-lucide="star"></i>
+                    <span>Destaques</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-card">
+                    <i data-lucide="graduation-cap"></i>
+                    <p>Grandes sonhos exigem grandes preparações.</p>
+                </div>
+
+                <div class="sidebar-waves">
+                    <div class="wave wave-1"></div>
+                    <div class="wave wave-2"></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-wrapper" data-total-questions="90">
+
+            <header class="top-header">
+                <form class="search-bar" role="search">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input id="site-search" type="search" placeholder="Buscar questões, materiais, livros, etc..." aria-label="Buscar no site">
+                </form>
+
+                <div class="header-actions">
+                    <button class="header-theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Ativar modo escuro" title="Ativar modo escuro">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button class="icon-btn" type="button" aria-label="Abrir destaques" title="Destaques">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="profile-btn" type="button" aria-label="Abrir configurações" title="Configurações">
+                        <i data-lucide="user"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+
+                <div class="main-column">
+
+                    <section class="page-hero hero-banner">
+                        <div class="hero-content">
+                            <span class="hero-tag">META VESTIBULAR</span>
+                            <h1>A mente que se abre para o novo jamais volta a seu tamanho original.</h1>
+                            <p>Estude com foco, tenha acesso a questões de vestibulares, materiais didáticos e livros completos e resumidos, tudo em um só lugar.</p>
+                            <a class="btn-primary" href="materiais.html">Começar agora <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="hero-illustration">
+                            <div class="dots dots-top-left"></div>
+                            <div class="dots dots-top-right"></div>
+                            <div class="dots dots-bottom-center"></div>
+
+                            <div class="illustration-graphic">
+                                <div class="grad-cap">
+                                    <div class="cap-top"></div>
+                                    <div class="cap-base"></div>
+                                </div>
+                                <div class="books-stack">
+                                    <div class="book book-top"></div>
+                                    <div class="book book-middle"></div>
+                                    <div class="book book-bottom"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="quick-access-section">
+                        <div class="section-header">
+                            <h2>Acessos rápidos</h2>
+                            <a href="questoes.html" class="link-see-all">Ver todos <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="quick-cards-grid">
+                            <a class="quick-card" href="questoes.html">
+                                <i data-lucide="edit-3" class="card-icon"></i>
+                                <h3>Questões</h3>
+                                <p>Resolva questões de vestibulares com gabarito corrigido.</p>
+                                <i data-lucide="arrow-right" class="card-arrow"></i>
+                            </a>
+
+                            <a class="quick-card" href="materiais.html">
+                                <i data-lucide="book-open" class="card-icon"></i>
+                                <h3>Materiais Didáticos</h3>
+                                <p>Revise os conteúdos das principais matérias para o vestibular.</p>
+                                <i data-lucide="arrow-right" class="card-arrow"></i>
+                            </a>
+
+                            <a class="quick-card" href="livros.html">
+                                <i data-lucide="library" class="card-icon"></i>
+                                <h3>Livros</h3>
+                                <p>Acesse livros completos ou versões resumidas dos conteúdos.</p>
+                                <i data-lucide="arrow-right" class="card-arrow"></i>
+                            </a>
+
+                            <a class="quick-card" href="progresso.html">
+                                <i data-lucide="bar-chart-2" class="card-icon"></i>
+                                <h3>Meu Progresso</h3>
+                                <p>Acompanhe seu desempenho e veja onde focar mais nos estudos.</p>
+                                <i data-lucide="arrow-right" class="card-arrow"></i>
+                            </a>
+                        </div>
+                    </section>
+
+                    <section class="activities-section">
+                        <div class="section-header">
+                            <h2>Últimas atividades</h2>
+                            <a href="progresso.html" class="link-see-all">Ver todas <i data-lucide="arrow-right"></i></a>
+                        </div>
+
+                        <div class="activities-list" id="home-activities"></div>
+                    </section>
+
+                    <section class="meta-articles-section" id="meta-artigos">
+                        <div class="section-header">
+                            <h2>Os artigos do mês</h2>
+                            <a href="#meta-artigos" class="link-see-all">Explorar conteúdos <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="meta-articles-grid">
+                            <a href="materiais.html?q=mecanica" class="meta-article-card"><img src="assets/mecanica.png" alt="Ilustração de um pêndulo para mecânica"><div class="meta-article-content"><span>FÍSICA • MECÂNICA</span><h3>As Leis de Newton: o que cada uma diz e por que funcionam</h3><p>Inércia, força e reação. Em vez de decorar os três enunciados, entenda o princípio físico de cada um.</p></div></a>
+                            <a href="materiais.html?q=eletricidade" class="meta-article-card"><img src="assets/eletricidade.png" alt="Circuito elétrico ilustrado"><div class="meta-article-content"><span>FÍSICA • ELETRICIDADE</span><h3>Carga elétrica: o que é, como se comporta e por que importa</h3><p>O ponto de partida de toda a eletricidade. Entenda a carga antes de chegar em campo, corrente e circuitos.</p></div></a>
+                            <a href="materiais.html?q=termodinamica" class="meta-article-card"><img src="assets/termodinamica.png" alt="Ilustração de um motor para termodinâmica"><div class="meta-article-content"><span>FÍSICA • TERMODINÂMICA</span><h3>Calorimetria: como o calor se transforma em variação de temperatura</h3><p>Calor específico, capacidade térmica e trocas de calor: explicados pelo que de fato acontece com a energia.</p></div></a>
+                        </div>
+                    </section>
+                    <section class="meta-physics-promo">
+                        <div class="meta-physics-copy"><span class="meta-promo-eyebrow">PREPARAÇÃO PARA O ENEM</span><h2>Estudar Física de verdade antes da prova.</h2><p>Toda a Física do ensino médio, do fenômeno à fórmula, com exercícios resolvidos passo a passo e o método “entender, não decorar” aplicado em problemas reais de prova.</p></div>
+                        <div class="meta-physics-card"><span class="meta-course-label">TODOS OS CONTEÚDOS DO ENEM</span><h3>Lições de Física</h3><p>Acesso imediato após a matrícula. Estude no seu ritmo, com exercícios corrigidos em vídeo.</p><a href="https://universonarrado.com.br/cursos/licoes-de-fisica" target="_blank" rel="noopener noreferrer">Conhecer Lições de Física <span aria-hidden="true">→</span></a><small>Aprender nunca é demais.</small></div>
+                    </section>
+                </div>
+
+                <aside class="right-column">
+
+                    <div class="card progress-card">
+                        <div class="donut-chart-container">
+                            <svg class="donut-chart" viewBox="0 0 100 100">
+                                <circle class="donut-bg" cx="50" cy="50" r="40"></circle>
+                                <circle class="donut-fill" id="home-progress-ring" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" role="progressbar" aria-label="Progresso geral" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></circle>
+                            </svg>
+                            <div class="donut-text">
+                                <span class="donut-label">Seu progresso</span>
+                                <span class="donut-value" id="home-progress-value">0%</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="home-progress-bar" style="width: 0%;"></div>
+                        </div>
+                        <h3>Continue assim!</h3>
+                        <p id="home-progress-count" class="progress-count">0 de 90 questões</p>
+                        <p id="home-progress-message">Responda às questões para acompanhar seu progresso. Vamos em frente!</p>
+                    </div>
+
+                    <div class="card highlights-card">
+                        <div class="highlights-header">
+                            <i data-lucide="star" class="star-icon"></i>
+                            <h3>Destaques</h3>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i data-lucide="file-text"></i></div>
+                            <div class="highlight-info">
+                                <h4>Novos simulados</h4>
+                                <p>Confira os simulados mais recentes dos principais vestibulares.</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="highlight-arrow"></i>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i data-lucide="book-open"></i></div>
+                            <div class="highlight-info">
+                                <h4>Livros em destaque</h4>
+                                <p>As melhores obras para sua preparação, com resumos e versões completas.</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="highlight-arrow"></i>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i data-lucide="target"></i></div>
+                            <div class="highlight-info">
+                                <h4>Trilha de estudos</h4>
+                                <p>Organize seu plano de estudos e receba recomendações personalizadas.</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="highlight-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="card motivational-card">
+                        <div class="motivational-content">
+                            <div class="rocket-wrapper">
+                                <i data-lucide="rocket" class="rocket-icon"></i>
+                            </div>
+                            <h3>Disciplina hoje, conquista amanhã!</h3>
+                            <p>O vestibular é um desafio, mas você não está sozinho.</p>
+                        </div>
+                        <div class="card-waves">
+                            <div class="m-wave m-wave-1"></div>
+                            <div class="m-wave m-wave-2"></div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="question-bank.js"></script>
+    <script src="script.js"></script>
+    <script src="home-dashboard.js"></script>
+</body>
+</html>
