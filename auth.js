@@ -22,15 +22,44 @@
     }
     function writeUsers(users) { return set("localStorage", USERS_KEY, JSON.stringify(users)); }
 
+    var cfg = window.META_SUPABASE || {};
+    var online = !!(cfg.url && cfg.anonKey && window.supabase && window.supabase.createClient);
+    var client = null;
+    var tokenKey = null;
+    if (online) {
+        client = window.supabase.createClient(cfg.url, cfg.anonKey, {
+            auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false }
+        });
+        tokenKey = "sb-" + new URL(cfg.url).hostname.split(".")[0] + "-auth-token";
+    }
+
+    function onlineSession() {
+        try {
+            var token = JSON.parse(get("localStorage", tokenKey));
+            if (token && token.user && token.user.email && (token.refresh_token || token.access_token)) return token.user;
+        } catch (e) { return null; }
+        return null;
+    }
+
     function normalizeEmail(email) { return String(email || "").trim().toLowerCase(); }
 
     function currentEmail() {
+        if (online) {
+            var session = onlineSession();
+            return session ? normalizeEmail(session.email) : null;
+        }
         var email = get("sessionStorage", SESSION_KEY) || get("localStorage", SESSION_KEY);
         if (!email) return null;
         return readUsers()[email] ? email : null;
     }
 
     function currentUser() {
+        if (online) {
+            var session = onlineSession();
+            if (!session) return null;
+            var meta = session.user_metadata || {};
+            return { id: session.id, email: normalizeEmail(session.email), name: meta.name || session.email };
+        }
         var email = currentEmail();
         if (!email) return null;
         var user = readUsers()[email];
@@ -44,6 +73,7 @@
     }
 
     function logout() {
+        if (online) { cloudLogout(); return; }
         remove("sessionStorage", SESSION_KEY);
         remove("localStorage", SESSION_KEY);
         window.location.replace("login.html");
@@ -93,12 +123,162 @@
             .then(function (bits) { return { alg: "pbkdf2", hash: toHex(bits) }; });
     }
 
+
+    var DATA_NAMES = ["metaVestibularStudy", "metaVestibularFavorites", "metaVestibularSettings", "metaVestibularAvatar"];
+    var DIRTY_NAME = "metaVestibularDirty";
+    var SYNCED_NAME = "metaVestibularSyncedAt";
+    var rawSet = Storage.prototype.setItem;
+    var rawRemove = Storage.prototype.removeItem;
+    var pushTimer = null;
+
+    function putRaw(name, value) {
+        try { rawSet.call(window.localStorage, key(name), value); } catch (e) { return false; }
+        return true;
+    }
+    function dropRaw(name) {
+        try { rawRemove.call(window.localStorage, key(name)); } catch (e) { return; }
+    }
+    function getRaw(name) { return get("localStorage", key(name)); }
+
+    function parseStored(name, fallback) {
+        try {
+            var value = JSON.parse(getRaw(name));
+            return value === null || value === undefined ? fallback : value;
+        } catch (e) { return fallback; }
+    }
+
+    function translateError(error) {
+        var text = String((error && error.message) || error || "").toLowerCase();
+        if (text.indexOf("invalid login") !== -1) return new Error("E-mail ou senha incorretos.");
+        if (text.indexOf("already registered") !== -1) return new Error("Já existe uma conta com este e-mail. Entre ou use outro e-mail.");
+        if (text.indexOf("not confirmed") !== -1) return new Error("Confirme seu e-mail antes de entrar. Verifique sua caixa de entrada.");
+        if (text.indexOf("password") !== -1) return new Error("A senha precisa ter pelo menos 6 caracteres.");
+        if (text.indexOf("rate limit") !== -1 || text.indexOf("too many") !== -1) return new Error("Muitas tentativas. Aguarde um pouco e tente de novo.");
+        if (text.indexOf("fetch") !== -1 || text.indexOf("network") !== -1) return new Error("Sem conexão com o servidor. Verifique sua internet.");
+        return new Error("Não foi possível concluir. Tente novamente.");
+    }
+
+    function pushNow() {
+        window.clearTimeout(pushTimer);
+        pushTimer = null;
+        var current = currentUser();
+        if (!current) return Promise.resolve();
+        var avatar = getRaw("metaVestibularAvatar");
+        var row = {
+            user_id: current.id,
+            study: parseStored("metaVestibularStudy", {}),
+            favorites: parseStored("metaVestibularFavorites", []),
+            settings: parseStored("metaVestibularSettings", {}),
+            avatar: avatar || null
+        };
+        return client.from("user_data").upsert(row, { onConflict: "user_id" }).select("updated_at").single()
+            .then(function (result) {
+                if (result.error) throw result.error;
+                putRaw(SYNCED_NAME, result.data.updated_at);
+                dropRaw(DIRTY_NAME);
+            })
+            .catch(function (error) { console.warn("Não foi possível sincronizar com o servidor.", error); });
+    }
+
+    function schedulePush() {
+        putRaw(DIRTY_NAME, "1");
+        window.clearTimeout(pushTimer);
+        pushTimer = window.setTimeout(pushNow, 600);
+    }
+
+    function isDataKey(storageKey) {
+        var email = currentEmail();
+        if (!email) return false;
+        return DATA_NAMES.some(function (name) { return storageKey === name + ":" + email; });
+    }
+
+    function watchStorage() {
+        Storage.prototype.setItem = function (storageKey, value) {
+            rawSet.call(this, storageKey, value);
+            if (this === window.localStorage && isDataKey(storageKey)) schedulePush();
+        };
+        Storage.prototype.removeItem = function (storageKey) {
+            rawRemove.call(this, storageKey);
+            if (this === window.localStorage && isDataKey(storageKey)) schedulePush();
+        };
+        document.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === "hidden" && pushTimer) pushNow();
+        });
+        window.addEventListener("pagehide", function () { if (pushTimer) pushNow(); });
+    }
+
+    function syncDown() {
+        var current = currentUser();
+        if (!current) return Promise.resolve({ changed: false });
+        return client.from("user_data").select("*").eq("user_id", current.id).maybeSingle()
+            .then(function (result) {
+                if (result.error) throw result.error;
+                var row = result.data;
+                if (!row || getRaw(DIRTY_NAME)) return pushNow().then(function () { return { changed: false }; });
+                if (row.updated_at === getRaw(SYNCED_NAME)) return { changed: false };
+                putRaw("metaVestibularStudy", JSON.stringify(row.study || {}));
+                putRaw("metaVestibularFavorites", JSON.stringify(row.favorites || []));
+                putRaw("metaVestibularSettings", JSON.stringify(row.settings || {}));
+                if (row.avatar) putRaw("metaVestibularAvatar", row.avatar); else dropRaw("metaVestibularAvatar");
+                putRaw(SYNCED_NAME, row.updated_at);
+                return { changed: true };
+            })
+            .catch(function (error) {
+                console.warn("Não foi possível carregar seus dados do servidor.", error);
+                return { changed: false };
+            });
+    }
+
+    function cloudRegister(data) {
+        var name = String(data.name || "").trim().slice(0, 40);
+        var email = normalizeEmail(data.email);
+        var password = String(data.password || "");
+        if (!name) return Promise.reject(new Error("Informe seu nome."));
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return Promise.reject(new Error("Informe um e-mail válido."));
+        if (password.length < 6) return Promise.reject(new Error("A senha precisa ter pelo menos 6 caracteres."));
+
+        return client.auth.signUp({ email: email, password: password, options: { data: { name: name } } })
+            .then(function (result) {
+                if (result.error) throw translateError(result.error);
+                var created = result.data && result.data.user;
+                if (created && created.identities && created.identities.length === 0) {
+                    throw new Error("Já existe uma conta com este e-mail. Entre ou use outro e-mail.");
+                }
+                if (!result.data.session) return { needsConfirmation: true, email: email, name: name };
+                putRaw("metaVestibularSettings", JSON.stringify({ name: name }));
+                return syncDown().then(function () { return { email: email, name: name }; });
+            }, function (error) { throw translateError(error); });
+    }
+
+    function cloudLogin(data) {
+        var email = normalizeEmail(data.email);
+        return client.auth.signInWithPassword({ email: email, password: String(data.password || "") })
+            .then(function (result) {
+                if (result.error) throw translateError(result.error);
+                return syncDown().then(function () {
+                    var current = currentUser();
+                    return { email: email, name: current ? current.name : email };
+                });
+            }, function (error) { throw translateError(error); });
+    }
+
+    function cloudLogout() {
+        var email = currentEmail();
+        pushNow().then(function () { return client.auth.signOut(); }).catch(function () { return null; }).then(function () {
+            if (email) {
+                DATA_NAMES.concat([DIRTY_NAME, SYNCED_NAME]).forEach(function (name) { remove("localStorage", name + ":" + email); });
+            }
+            window.location.replace("login.html");
+        });
+    }
+
     function key(name) {
         var email = currentEmail();
         return email ? name + ":" + email : name;
     }
 
     function register(data) {
+        if (online) return cloudRegister(data);
         var name = String(data.name || "").trim().slice(0, 40);
         var email = normalizeEmail(data.email);
         var password = String(data.password || "");
@@ -135,6 +315,7 @@
     }
 
     function login(data) {
+        if (online) return cloudLogin(data);
         var email = normalizeEmail(data.email);
         var user = readUsers()[email];
         var invalid = new Error("E-mail ou senha incorretos.");
@@ -153,6 +334,7 @@
     }
 
     window.MetaAuth = {
+        online: online,
         user: currentUser,
         key: key,
         register: register,
@@ -173,6 +355,24 @@
 
     if (user && !onLogin) {
         document.addEventListener("DOMContentLoaded", function () { setupProfileMenu(user); });
+    }
+
+    if (online) {
+        client.auth.onAuthStateChange(function (event) {
+            if (event === "SIGNED_OUT" && !onLogin) window.location.replace("login.html");
+        });
+        if (user && !onLogin) {
+            watchStorage();
+            syncDown().then(function (result) {
+                var flag = "metaVestibularReloaded";
+                if (result.changed && !get("sessionStorage", flag)) {
+                    set("sessionStorage", flag, "1");
+                    window.location.reload();
+                } else {
+                    remove("sessionStorage", flag);
+                }
+            });
+        }
     }
 
     function readJson(name, fallback) {

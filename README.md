@@ -25,6 +25,21 @@
 - O primeiro cadastro herda o progresso que já existia no navegador antes do login.
 - O botão de sair fica no header, ao lado do perfil.
 
+## Banco de dados na nuvem (Supabase)
+
+Com o `config.js` vazio, o site usa o login local descrito acima. Para as contas e os dados funcionarem em qualquer dispositivo, mesmo com o site no GitHub Pages:
+
+1. Crie um projeto gratuito em https://supabase.com.
+2. No projeto, abra **SQL Editor**, cole todo o conteúdo de `supabase-setup.sql` e clique em **Run**. Isso cria a tabela `user_data` com a regra de que cada usuário só acessa os próprios dados.
+3. Em **Authentication > Providers > Email**, desative **Confirm email** (senão cada cadastro precisa ser confirmado por e-mail antes do primeiro login).
+4. Em **Project Settings > API**, copie a **Project URL** e a chave **anon public** e coloque em `config.js`.
+5. Em **Authentication > URL Configuration**, coloque o endereço do seu GitHub Pages em **Site URL**.
+6. Publique a pasta no GitHub Pages.
+
+A chave `anon` pode ficar no código do site: ela é pública por projeto, e a segurança vem das regras de acesso (RLS) criadas pelo SQL. Nunca coloque a chave `service_role` no site.
+
+Cada conta guarda na nuvem o progresso, os destaques, as configurações e a foto de perfil. O navegador mantém uma cópia local e sincroniza ao entrar, ao responder e ao sair.
+
 ## Armazenamento
 
 As preferências, respostas e destaques são salvos no `localStorage` deste navegador/dispositivo. Eles não são sincronizados automaticamente entre dispositivos.

@@ -30,9 +30,15 @@
 
     if (auth.user()) { window.location.replace(next()); return; }
 
-    function showError(message) {
+    function showError(message, info) {
         error.textContent = message;
         error.hidden = !message;
+        error.classList.toggle("is-info", !!info);
+    }
+
+    if (auth.online) {
+        Array.prototype.forEach.call(document.querySelectorAll("[data-local-only]"), function (node) { node.hidden = true; });
+        document.getElementById("login-note").textContent = "Sua conta fica salva na nuvem. Entre com o mesmo e-mail em qualquer dispositivo.";
     }
 
     function setMode(mode) {
@@ -69,7 +75,7 @@
                 name: form.elements.name ? form.elements.name.value : "",
                 email: form.elements.email.value,
                 password: form.elements.password.value,
-                remember: form.elements.remember.checked
+                remember: form.elements.remember ? form.elements.remember.checked : true
             };
             if (form.elements.confirm && form.elements.confirm.value !== data.password) {
                 showError("As senhas não conferem.");
@@ -77,7 +83,14 @@
             }
             var button = form.querySelector(".login-submit");
             button.disabled = true;
-            action(data).then(function () {
+            action(data).then(function (result) {
+                if (result && result.needsConfirmation) {
+                    button.disabled = false;
+                    setMode("login");
+                    forms.login.elements.email.value = result.email;
+                    showError("Conta criada! Confirme seu e-mail pelo link que enviamos e depois entre.", true);
+                    return;
+                }
                 window.location.replace(next());
             }).catch(function (err) {
                 showError(err && err.message ? err.message : "Algo deu errado. Tente novamente.");
